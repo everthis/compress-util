@@ -5,6 +5,7 @@ const path = require("path")
 const Table = require("cli-table")
 const colors = require("colors")
 const zlib = require("zlib")
+const process = require('process');
 
 const zlibSettings = {
   level: 9,
@@ -88,7 +89,8 @@ const walk = function (dir, exts, done) {
 
 function cb(err, res) {
   const size = res.map(e => getFilesizeInBytes(e)).reduce((ac, e) => ac + +e, 0)
-  const arr = res.map(e => e.slice(__dirname.length + 1))
+  const cwd = process.cwd()
+  const arr = res.map(e => e.slice(cwd.length + 1))
   let p = Promise.resolve()
   const bSize = []
   const gSize = []
@@ -144,5 +146,4 @@ function getFilesizeInBytes(filename) {
   return fileSizeInKiloBytes
 }
 
-const p = path.join(__dirname, ".")
-walk(p, extArr, cb)
+walk(process.cwd(), extArr, cb)
