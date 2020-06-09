@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const fs = require("fs")
 const path = require("path")
 const Table = require("cli-table")
