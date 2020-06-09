@@ -19,5 +19,8 @@
   "homepage": "https://github.com/everthis/compress-util#readme",
   "dependencies": {
     "cli-table": "^0.3.1"
+  },
+  "bin": {
+    "compress-util": "./index.js"
   }
 }

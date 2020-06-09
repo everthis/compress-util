@@ -2,9 +2,7 @@ const fs = require("fs")
 const path = require("path")
 const Table = require("cli-table")
 const colors = require("colors")
-const brotli = require("brotli")
 const zlib = require("zlib")
-const { promisify } = require("util")
 
 const zlibSettings = {
   level: 9,
@@ -86,9 +84,6 @@ const walk = function (dir, exts, done) {
   })
 }
 
-const p = path.join(__dirname, ".")
-walk(p, extArr, cb)
-
 function cb(err, res) {
   const size = res.map(e => getFilesizeInBytes(e)).reduce((ac, e) => ac + +e, 0)
   const arr = res.map(e => e.slice(__dirname.length + 1))
@@ -146,3 +141,6 @@ function getFilesizeInBytes(filename) {
   const fileSizeInKiloBytes = (stats["size"] / 1024).toFixed(2)
   return fileSizeInKiloBytes
 }
+
+const p = path.join(__dirname, ".")
+walk(p, extArr, cb)
