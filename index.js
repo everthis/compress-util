@@ -5,13 +5,23 @@ const path = require("path")
 const Table = require("cli-table")
 const colors = require("colors")
 const zlib = require("zlib")
-const process = require('process');
+const process = require("process")
 
 const zlibSettings = {
   level: 9,
 }
 
-const extArr = [".js", ".css", ".json", ".html", ".xml", ".woff2", ".map"]
+const extArr = [
+  ".js",
+  ".css",
+  ".json",
+  ".html",
+  ".xml",
+  ".woff2",
+  ".map",
+  ".svg",
+  ".csv",
+]
 
 function compressToGzip(file) {
   return new Promise((resolve, reject) => {
@@ -128,7 +138,7 @@ function cb(err, res) {
 function delta(a, b) {
   const sign = a > b ? "-" : a === b ? "" : "+"
   const num = ((b - a) / a) * 100
-  const res = num.toFixed(2) + '%'
+  const res = num.toFixed(2) + "%"
   return a > b ? colors.green(res) : a === b ? res : colors.red(res)
 }
 
