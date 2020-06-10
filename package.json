@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/everthis/compress-util#readme",
   "dependencies": {
+    "cli-progress": "^3.8.2",
     "cli-table": "^0.3.1"
   },
   "bin": {
