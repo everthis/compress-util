@@ -11,7 +11,7 @@ const zlibSettings = {
   level: 9,
 }
 
-const extArr = [".js", ".css", ".json", ".html", ".xml", ".woff2"]
+const extArr = [".js", ".css", ".json", ".html", ".xml", ".woff2", ".map"]
 
 function compressToGzip(file) {
   return new Promise((resolve, reject) => {
